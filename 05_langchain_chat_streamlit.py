@@ -11,6 +11,9 @@ import streamlit as st   # 스트림릿 모듈 추가 pip install streamlit 해�
 
 load_dotenv()       
 
+# 이 부분은 스트림릿 서버에 deploy 할때만 활성화 시켜주면 된다
+gem_api_key = st.secrets["gemini_api_key"]
+
 # 타이틀 하나 너어준다
 st.set_page_config(page_title="제미나이 채팅")
 st.title("랭체인 제미나이 채팅 애플리케이션")
@@ -71,8 +74,8 @@ def get_message_history(session_id: str):
     return st.session_state.store[session_id]   
 
 
-# ai 모델을 만든다
-llm_model = ChatGoogleGenerativeAI(model="gemini-3-flash-preview", temperature=temperature_config)
+# ai 모델을 만든다, 마지막 키 설정은 스트림릿 클라우드에 디플로이 할때만 너어 준다
+llm_model = ChatGoogleGenerativeAI(model="gemini-3-flash-preview",temperature=temperature_config, api_key = gem_api_key )
 
 prompt = ChatPromptTemplate.from_messages([
     ("system", system_instruction),             
