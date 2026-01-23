@@ -25,7 +25,10 @@ with st.sidebar:
     
     # api 키 입력 부분
     st.markdown("### API_KEY 입력)")
-    gem_api_key = st.text_input("",type="password", placeholder="AIza...")
+    gem_api_key = st.text_input("",
+                                type="password", 
+                                placeholder="AIza...",
+                                label_visibility="collapsed")
 
     # 시스템 인스트럭션
     # 제목
