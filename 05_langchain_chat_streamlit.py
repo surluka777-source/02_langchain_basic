@@ -12,7 +12,8 @@ import streamlit as st   # 스트림릿 모듈 추가 pip install streamlit 해�
 load_dotenv()       
 
 # 이 부분은 스트림릿 서버에 deploy 할때만 활성화 시켜주면 된다
-gem_api_key = st.secrets["gemini_api_key"]
+# gem_api_key = st.secrets["gemini_api_key"]
+
 
 # 타이틀 하나 너어준다
 st.set_page_config(page_title="제미나이 채팅")
@@ -22,6 +23,10 @@ st.title("랭체인 제미나이 채팅 애플리케이션")
 with st.sidebar:
     st.header("⚙️설정")
     
+    # api 키 입력 부분
+    st.markdown("### API_KEY 입력)")
+    gem_api_key = st.text_input("",type="password", placeholder="AIza...")
+
     # 시스템 인스트럭션
     # 제목
     st.markdown("### System Insruction(AI 혁할 및 지침)")
